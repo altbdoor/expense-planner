@@ -1,0 +1,16 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "Expense Planner",
+    "scope": "/expense-planner/",
+    "display": "browser",
+    "start_url": "https://altbdoor.github.io/expense-planner/",
+    "short_name": "expenseplanner",
+    "theme_color": "transparent",
+    "description": "",
+    "orientation": "any",
+    "background_color": "transparent",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": []
+}
