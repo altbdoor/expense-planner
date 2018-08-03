@@ -30,9 +30,14 @@ angular.module('ExpensePlannerApp', [])
             localStorage.setItem(configKey, data)
         }
 
+        function purge () {
+            localStorage.removeItem(configKey)
+        }
+
         return {
             load: load,
             save: save,
+            purge: purge,
         }
     }
 ])
@@ -239,6 +244,13 @@ angular.module('ExpensePlannerApp', [])
             else if (operation == 'export') {
                 var rawData = ConfigService.load()
                 textarea.value = JSON.stringify(rawData, null, 4)
+            }
+            else if (operation == 'purge') {
+                var result = window.confirm('Purge all data?')
+                if (result) {
+                    ConfigService.purge()
+                    window.location.reload()
+                }
             }
         }
 
