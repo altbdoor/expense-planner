@@ -5,7 +5,7 @@
     "scope": "/expense-planner/",
     "display": "browser",
     "start_url": "https://altbdoor.github.io/expense-planner/",
-    "short_name": "expenseplanner",
+    "short_name": "expenseplan",
     "theme_color": "transparent",
     "description": "",
     "orientation": "any",
