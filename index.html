@@ -30,64 +30,67 @@
 
         <div class="tab-content pt-3">
             <div class="tab-pane active" id="tab-pane-expenses">
-                <div class="table-responsive">
-                    <div style="min-width: 930px;">
-                        <table class="table table-bordered table-sm mb-0">
-                            <thead class="text-nowrap">
-                                <th class="text-right" style="width: 1%;">#</th>
-                                <th>Description</th>
-                                <th>Pay To</th>
-                                <th style="width: 120px;">Price</th>
-                                <th style="width: 120px;">Adjustment</th>
-                                <th>From</th>
-                                <th style="width: 1%;"></th>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="exp in vm.expensesList track by $index">
-                                    <td class="text-right">
-                                        {{ $index + 1 }}
-                                    </td>
-                                    <td>
+                <div class="card card-body p-2 mb-2" ng-repeat="exp in vm.expensesList track by $index" ng-class="{'bg-light': ($index % 2 == 0)}">
+                    <div class="row no-gutters">
+                        <div class="col-6 col-lg-1 pr-2 order-lg-1">
+                            <input type="text" readonly class="form-control-plaintext" value="#{{ $index + 1 }}">
+                        </div>
+                        <div class="col-6 col-lg-1 pl-0 pl-lg-2 text-right order-lg-3">
+                            <button type="button" class="btn btn-danger" ng-click="vm.removeExpense($index)">
+                                &times;
+                            </button>
+                        </div>
+                        <div class="col-lg-10 order-lg-2 mt-2 mt-lg-0">
+                            <div class="row no-gutters">
+                                <div class="col-lg-9">
+                                    <div class="mb-2">
+                                        <span class="small font-weight-bold">Description</span>
                                         <input type="text" class="form-control" ng-model="vm.expensesList[$index].desc">
-                                    </td>
-                                    <td>
-                                        <select class="form-control" ng-model="vm.expensesList[$index].payTo"
-                                            ng-options="friend for friend in vm.friendsList"></select>
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control" ng-model="vm.expensesList[$index].price">
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control" ng-model="vm.expensesList[$index].adjust">
-                                    </td>
-                                    <td>
-                                        <div class="form-check" ng-repeat="friend in vm.friendsList">
-                                            <input type="checkbox" class="form-check-input" id="expense-person-{{ $parent.$index }}-{{ $index }}"
-                                                ng-model="vm.expensesList[$parent.$index].from[friend].selected">
-                                            <label class="form-check-label" for="expense-person-{{ $parent.$index }}-{{ $index }}">
-                                                {{ friend }}
-                                            </label>
+                                    </div>
+
+                                    <div class="row no-gutters">
+                                        <div class="col-lg-4">
+                                            <span class="small font-weight-bold">Pay To</span>
+                                            <select class="form-control" ng-model="vm.expensesList[$index].payTo"
+                                                ng-options="friend for friend in vm.friendsList"></select>
                                         </div>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger" ng-click="vm.removeExpense($index)">
-                                            &times;
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-right" colspan="7">
-                                        <button type="button" class="btn btn-default" ng-click="vm.addExpense()">
-                                            Add New Row
-                                        </button>
-                                        <button type="button" class="btn btn-primary" ng-click="vm.saveExpense()">
-                                            Save All Data
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                        <div class="col-6 col-lg-4 pl-0 pl-lg-2 mt-2 mt-lg-0">
+                                            <span class="small font-weight-bold">Price</span>
+                                            <input type="number" class="form-control" ng-model="vm.expensesList[$index].price">
+                                        </div>
+                                        <div class="col-6 col-lg-4 pl-2 mt-2 mt-lg-0">
+                                            <span class="small font-weight-bold">Adjustment</span>
+                                            <input type="number" class="form-control" ng-model="vm.expensesList[$index].adjust">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 pl-0 pl-lg-3 mt-2 mt-lg-0">
+                                    <span class="small font-weight-bold">From</span>
+                                    <div class="row">
+                                        <div class="col-6" ng-repeat="friend in vm.friendsList">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="expense-person-{{ $parent.$index }}-{{ $index }}"
+                                                    ng-model="vm.expensesList[$parent.$index].from[friend].selected">
+                                                <label class="form-check-label" for="expense-person-{{ $parent.$index }}-{{ $index }}">
+                                                    {{ friend }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+
+                <div class="text-right">
+                    <button type="button" class="btn btn-default" ng-click="vm.addExpense()">
+                        Add New Row
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="vm.saveExpense()">
+                        Save All Data
+                    </button>
                 </div>
             </div>
             <div class="tab-pane" id="tab-pane-friends">
@@ -113,15 +116,17 @@
                         </div>
 
                         <div class="table-responsive" ng-show="vm.friendsList.length > 0">
-                            <table class="table table-bordered table-sm mb-0">
+                            <table class="table table-bordered table-striped table-sm mb-0">
                                 <thead class="text-nowrap">
-                                    <th class="text-right" style="width: 1%;">#</th>
+                                    <th class="text-right" style="width: 1%;"></th>
                                     <th>Name</th>
                                     <th></th>
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="friend in vm.friendsList">
-                                        <td class="text-right" style="width: 1%;">{{ $index + 1 }}</td>
+                                        <td class="text-right" style="width: 1%;">
+                                            #{{ $index + 1 }}
+                                        </td>
                                         <td>{{ friend }}</td>
                                         <td style="width: 1%;">
                                             <button type="button" class="btn btn-danger" ng-click="vm.removeFriend($index)">
@@ -165,6 +170,22 @@
                     <button class="btn btn-default" type="button" ng-click="vm.modifyRawData('export')">Export</button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="py-3 border-top small text-center">
+            <ul class="list-inline mb-0">
+                <li class="list-inline-item">
+                    <a href="https://github.com/altbdoor/expense-planner">GitHub</a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="https://getbootstrap.com/">Bootstrap 4</a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="https://angularjs.org/">AngularJS</a>
+                </li>
+            </ul>
         </div>
     </div>
 
