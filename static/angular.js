@@ -238,8 +238,15 @@ angular.module('ExpensePlannerApp', [])
             var textarea = document.getElementById('raw-data')
 
             if (operation == 'import') {
-                ConfigService.save(JSON.parse(textarea.value))
-                window.location.reload()
+                var textareaVal = textarea.value
+                try {
+                    textareaVal = JSON.parse(textarea.value)
+                    ConfigService.save(textareaVal)
+                    window.location.reload()
+                }
+                catch (e) {
+                    alert('Invalid JSON format')
+                }
             }
             else if (operation == 'export') {
                 var rawData = ConfigService.load()

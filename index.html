@@ -57,11 +57,11 @@
                                         </div>
                                         <div class="col-6 col-lg-4 pl-0 pl-lg-2 mt-2 mt-lg-0">
                                             <span class="small font-weight-bold">Price</span>
-                                            <input type="number" class="form-control" ng-model="vm.expensesList[$index].price">
+                                            <input type="number" class="form-control" step="0.01" ng-model="vm.expensesList[$index].price">
                                         </div>
                                         <div class="col-6 col-lg-4 pl-2 mt-2 mt-lg-0">
                                             <span class="small font-weight-bold">Adjustment</span>
-                                            <input type="number" class="form-control" ng-model="vm.expensesList[$index].adjust">
+                                            <input type="number" class="form-control" step="0.01" ng-model="vm.expensesList[$index].adjust">
                                         </div>
                                     </div>
                                 </div>
