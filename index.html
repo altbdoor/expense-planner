@@ -7,7 +7,8 @@
     <title>Expense Planner</title>
 
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="icon" type="image/x-icon" href="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" media="none" onload="this.media='all';">
 </head>
 <body ng-app="ExpensePlannerApp" style="overflow-y: scroll;">
     <div class="container py-3" ng-controller="ExpenseController as vm">
@@ -195,10 +196,9 @@
         </div>
     </div>
 
-    <script src="./pwabuilder-sw-register.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/angular@1.7.2/angular.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
-    <script src="./static/manup.min.js"></script>
-    <script src="./static/script.js"></script>
+    <script async src="./pwabuilder-sw-register.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/angular@1.7.2/angular.min.js"></script>
+    <script defer src="./static/script.js"></script>
 </body>
 </html>
