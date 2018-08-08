@@ -1,0 +1,6 @@
+exclude:
+- "README.md"
+- "LICENSE"
+- "pwabuilder-sw.js"
+- "pwabuilder-sw-register.js"
+- "static/script.js"
