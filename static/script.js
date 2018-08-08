@@ -4,8 +4,8 @@ angular.module('ExpensePlannerApp', [])
     '$compileProvider',
     function ($compileProvider) {
         $compileProvider.debugInfoEnabled(false)
-        $compileProvider.commentDirectivesEnabled(false);
-        $compileProvider.cssClassDirectivesEnabled(false);
+        $compileProvider.commentDirectivesEnabled(false)
+        $compileProvider.cssClassDirectivesEnabled(false)
     }
 ])
 
@@ -250,7 +250,7 @@ angular.module('ExpensePlannerApp', [])
             }
             else if (operation == 'export') {
                 var rawData = ConfigService.load()
-                textarea.value = JSON.stringify(rawData, null, 4)
+                textarea.value = JSON.stringify(rawData)
             }
             else if (operation == 'purge') {
                 var result = window.confirm('Purge all data?')
