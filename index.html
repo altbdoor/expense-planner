@@ -23,23 +23,25 @@
 </head>
 <body ng-app="ExpensePlannerApp" style="overflow-y: scroll;">
     <div class="container py-3" ng-controller="ExpenseController as vm">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#tab-pane-expenses">
-                    Expenses
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-pane-friends">
-                    Friends
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-pane-calculate" ng-click="vm.calculate()">
-                    Calculate
-                </a>
-            </li>
-        </ul>
+        <div style="overflow-x: auto;">
+            <ul class="nav nav-tabs flex-nowrap">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#tab-pane-expenses">
+                        Expenses
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab-pane-friends">
+                        Friends
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab-pane-calculate" ng-click="vm.calculate()">
+                        Calculate
+                    </a>
+                </li>
+            </ul>
+        </div>
 
         <div class="tab-content pt-3">
             <div class="tab-pane active" id="tab-pane-expenses">
