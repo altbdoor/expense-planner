@@ -23,7 +23,7 @@
 </head>
 <body ng-app="ExpensePlannerApp" style="overflow-y: scroll;">
     <div class="container py-3" ng-controller="ExpenseController as vm">
-        <div style="overflow-x: auto;">
+        <div class="pb-3" style="overflow-x: auto;">
             <ul class="nav nav-tabs flex-nowrap">
                 <li class="nav-item">
                     <a class="nav-link active" data-toggle="tab" href="#tab-pane-expenses">
@@ -43,7 +43,11 @@
             </ul>
         </div>
 
-        <div class="tab-content pt-3">
+        <div class="text-center h2" ng-if="!vm.isReady">
+            Loading...
+        </div>
+
+        <div class="tab-content d-none">
             <div class="tab-pane active" id="tab-pane-expenses">
                 <div class="card card-body p-2 mb-2" ng-repeat="exp in vm.expensesList track by $index" ng-class="{'bg-light': ($index % 2 == 0)}">
                     <div class="row no-gutters">
@@ -103,7 +107,7 @@
                     <button type="button" class="btn btn-default" ng-click="vm.addExpense()">
                         Add New Row
                     </button>
-                    <button type="button" class="btn btn-primary" ng-click="vm.saveExpense()">
+                    <button type="button" class="btn btn-primary" ng-click="vm.saveExpense($event)">
                         Save All Data
                     </button>
                 </div>
@@ -117,12 +121,10 @@
                                 ng-model="vm.addFriendForm.name">
                         </div>
 
-                        <div class="row justify-content-end">
-                            <div class="col-12 col-lg-3">
-                                <button type="submit" class="btn btn-primary btn-block">
-                                    Save
-                                </button>
-                            </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">
+                                Save Friend
+                            </button>
                         </div>
                     </form>
                     <div class="col-12 col-lg-6 mt-3 mt-lg-0">
